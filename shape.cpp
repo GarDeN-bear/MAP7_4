@@ -4,19 +4,19 @@
 
 void Shape::fillingCoordinates(const int& _x1, const int& _y1, const int& _z1, const int& _x2, const int& _y2, const int& _z2, const int& _x3, const int& _y3, const int& _z3, const int& _x4, const int& _y4, const int& _z4, const int& _x5, const int& _y5, const int& _z5, const int& _x6, const int& _y6, const int& _z6, const int& _x7, const int& _y7, const int& _z7, const int& _x8, const int& _y8, const int& _z8)
 {
-	switch (type)
+	switch (static_cast<figures>(type))
 	{
-	case line:
+	case figures::line:
 		x1 = _x1; y1 = _y1;
 		x2 = _x2; y2 = _y2;
 		break;
-	case sqr:
+	case figures::sqr:
 		x1 = _x1; y1 = _y1;
 		x2 = _x2; y2 = _y2;
 		x3 = _x3; y3 = _y3;
 		x4 = _x4; y4 = _y4;
 		break;
-	case cube:
+	case figures::cube:
 		x1 = _x1; y1 = _y1; z1 = _z1;
 		x2 = _x2; y2 = _y2; z2 = _z2;
 		x3 = _x3; y3 = _y3; z3 = _z3;
@@ -33,13 +33,13 @@ void Shape::fillingCoordinates(const int& _x1, const int& _y1, const int& _z1, c
 
 void Shape::fillingCoordinates(const int& _x1, const int& _y1, const double& R, const double& H)
 {
-	switch (type)
+	switch (static_cast<figures>(type))
 	{
-	case circle:
+	case figures::circle:
 		x1 = _x1; y1 = _y1;
 		radius = R;
 		break;
-	case cylinder:
+	case figures::cylinder:
 		x1 = _x1; y1 = _y1;
 		radius = R;
 		height = H;
@@ -51,15 +51,15 @@ void Shape::fillingCoordinates(const int& _x1, const int& _y1, const double& R, 
 
 void Shape::calculateSquare(const int& a, const int& b, const int& c)
 {
-	switch (type)
+	switch (static_cast<figures>(type))
 	{
-	case line:
+	case figures::line:
 		square = 0;
 		break;
-	case sqr:
+	case figures::sqr:
 		square = a * b;
 		break;
-	case cube:
+	case figures::cube:
 		square = 2 * a * b + 2 * a * c + 2 * b * c;
 		break;
 	default:
@@ -69,12 +69,12 @@ void Shape::calculateSquare(const int& a, const int& b, const int& c)
 
 void Shape::calculateSquare(const double& R, const double& H)
 {
-	switch (type)
+	switch (static_cast<figures>(type))
 	{
-	case circle:
+	case figures::circle:
 		square = M_PI * R * R;
 		break;
-	case cylinder:
+	case figures::cylinder:
 		square = M_PI * R * R + 2 * R * H;
 		break;
 	default:
@@ -84,15 +84,15 @@ void Shape::calculateSquare(const double& R, const double& H)
 
 void Shape::calculateVolume(const int& a, const int& b, const int& c)
 {
-	switch (type)
+	switch (static_cast<figures>(type))
 	{
-	case line:
+	case figures::line:
 		volume = 0;
 		break;
-	case sqr:
+	case figures::sqr:
 		volume = 0;
 		break;
-	case cube:
+	case figures::cube:
 		volume = a * b * c;
 		break;
 	default:
@@ -102,12 +102,12 @@ void Shape::calculateVolume(const int& a, const int& b, const int& c)
 
 void Shape::calculateVolume(const double& R, const double& H)
 {
-	switch (type)
+	switch (static_cast<figures>(type))
 	{
-	case circle:
+	case figures::circle:
 		volume = 0;
 		break;
-	case cylinder:
+	case figures::cylinder:
 		volume = M_PI * R * R * H;
 		break;
 	default:
@@ -133,8 +133,10 @@ Shape::Shape(int _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, in
 
 }
 
-Shape::Shape(int type, int _x1, int _y1, double R, double H)
+Shape::Shape(int _type, int _x1, int _y1, double R, double H)
 {
+	type = _type;
+
 	// заполн¤ем координаты фигуры
 	fillingCoordinates(_x1, _y1, R, H);
 

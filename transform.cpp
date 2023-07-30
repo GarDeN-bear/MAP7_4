@@ -7,19 +7,19 @@ transform::transform(const Shape& sh)
 
 Shape transform::shift(int m, int n, int k)
 {
-	switch (shape.getType())
+	switch (static_cast<Shape::figures>(shape.getType()))
 	{
-	case Shape::line:
+	case Shape::figures::line:
 		shape.x1 += m; shape.y1 += n;
 		shape.x2 += m; shape.y2 += n;
 		break;
-	case Shape::sqr:
+	case Shape::figures::sqr:
 		shape.x1 += m; shape.y1 += n;
 		shape.x2 += m; shape.y2 += n;
 		shape.x3 += m; shape.y3 += n;
 		shape.x4 += m; shape.y4 += n;
 		break;
-	case Shape::cube:
+	case Shape::figures::cube:
 		shape.x1 += m; shape.y1 += n; shape.z1 += k;
 		shape.x2 += m; shape.y2 += n; shape.z2 += k;
 		shape.x3 += m; shape.y3 += n; shape.z3 += k;
@@ -35,19 +35,19 @@ Shape transform::shift(int m, int n, int k)
 
 Shape transform::scaleX(int a)
 {
-	switch (shape.getType())
+	switch (static_cast<Shape::figures>(shape.getType()))
 	{
-	case Shape::line:
+	case Shape::figures::line:
 		shape.x1 *= a;
 		shape.x2 *= a;
 		break;
-	case Shape::sqr:
+	case Shape::figures::sqr:
 		shape.x1 *= a;
 		shape.x2 *= a;
 		shape.x3 *= a;
 		shape.x4 *= a;
 		break;
-	case Shape::cube:
+	case Shape::figures::cube:
 		shape.x1 *= a;
 		shape.x2 *= a;
 		shape.x3 *= a;
@@ -63,19 +63,19 @@ Shape transform::scaleX(int a)
 
 Shape transform::scaleY(int d)
 {
-	switch (shape.getType())
+	switch (static_cast<Shape::figures>(shape.getType()))
 	{
-	case Shape::line:
+	case Shape::figures::line:
 		shape.y1 *= d;
 		shape.y2 *= d;
 		break;
-	case Shape::sqr:
+	case Shape::figures::sqr:
 		shape.y1 *= d;
 		shape.y2 *= d;
 		shape.y3 *= d;
 		shape.y4 *= d;
 		break;
-	case Shape::cube:
+	case Shape::figures::cube:
 		shape.y1 *= d;
 		shape.y2 *= d;
 		shape.y3 *= d;
@@ -91,19 +91,19 @@ Shape transform::scaleY(int d)
 
 Shape transform::scaleZ(int e)
 {
-	switch (shape.getType())
+	switch (static_cast<Shape::figures>(shape.getType()))
 	{
-	case Shape::line:
+	case Shape::figures::line:
 		shape.z1 *= e;
 		shape.z2 *= e;
 		break;
-	case Shape::sqr:
+	case Shape::figures::sqr:
 		shape.z1 *= e;
 		shape.z2 *= e;
 		shape.z3 *= e;
 		shape.z4 *= e;
 		break;
-	case Shape::cube:
+	case Shape::figures::cube:
 		shape.z1 *= e;
 		shape.y2 *= e;
 		shape.z3 *= e;
@@ -119,19 +119,19 @@ Shape transform::scaleZ(int e)
 
 Shape transform::scale(int s)
 {
-	switch (shape.getType())
+	switch (static_cast<Shape::figures>(shape.getType()))
 	{
-	case Shape::line:
+	case Shape::figures::line:
 		shape.x1 /= s; shape.y1 /= s;
 		shape.x2 /= s; shape.y2 /= s;
 		break;
-	case Shape::sqr:
+	case Shape::figures::sqr:
 		shape.x1 /= s; shape.y1 /= s;
 		shape.x2 /= s; shape.y2 /= s;
 		shape.x3 /= s; shape.y3 /= s;
 		shape.x4 /= s; shape.y4 /= s;
 		break;
-	case Shape::cube:
+	case Shape::figures::cube:
 		shape.x1 /= s; shape.y1 /= s; shape.z1 /= s;
 		shape.x2 /= s; shape.y2 /= s; shape.z2 /= s;
 		shape.x3 /= s; shape.y3 /= s; shape.z3 /= s;

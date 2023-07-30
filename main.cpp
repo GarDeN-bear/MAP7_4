@@ -41,9 +41,9 @@ int main()
 	transform transform25(shape25);
 	Shape shape26 = transform25.scaleZ(2);
 	std::cout << "scaleZ: " << shape26.z1 << std::endl;
-	// for 	circle and cylinder no work in transform type;
-	//Shape shape3(5, 1, 1, 1.5, 1.5);
-	//std::cout << "Try constructor 3: " << shape3.getType() << std::endl; // here mistake because in this constructor no implementation of parameter 'type'
-	//transform transform3(shape3);
-	//transform3.shift(1, 2, 3);
+	//for circle and cylinder no work in transform type;
+	Shape shape3(5, 1, 1, 1.5, 1.5);
+	std::cout << "Try constructor 3: " << shape3.getType() << std::endl; // here mistake because in this constructor no implementation of parameter 'type'
+	transform transform3(shape3);
+	transform3.shift(1, 2, 3);
 }
