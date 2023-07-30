@@ -82,20 +82,8 @@ void Shape::calculateSquare(const double& R, const double& H)
 	}
 }
 
-Shape::Shape(int _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, int _x3, int _y3, int _z3, int _x4, int _y4, int _z4, int _x5, int _y5, int _z5, int _x6, int _y6, int _z6, int _x7, int _y7, int _z7, int _x8, int _y8, int _z8)
+void Shape::calculateVolume(const int& a, const int& b, const int& c)
 {
-	type = _type;
-
-	// заполн¤ем координаты фигуры
-	fillingCoordinates(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _x4, _y4, _z4, _x5, _y5, _z5, _x6, _y6, _z6, _x7, _y7, _z7, _x8, _y8, _z8);
-	// стороны фигуры
-	int a = abs(x1 - x2);
-	int b = abs(y1 - y2);
-	int c = abs(z1 - z2);
-	// считаем площадь фигуры
-	calculateSquare(a, b, c);
-
-	// считаем объем фигуры
 	switch (type)
 	{
 	case line:
@@ -110,6 +98,38 @@ Shape::Shape(int _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, in
 	default:
 		break;
 	}
+}
+
+void Shape::calculateVolume(const double& R, const double& H)
+{
+	switch (type)
+	{
+	case circle:
+		volume = 0;
+		break;
+	case cylinder:
+		volume = M_PI * R * R * H;
+		break;
+	default:
+		break;
+	}
+}
+
+Shape::Shape(int _type, int _x1, int _y1, int _z1, int _x2, int _y2, int _z2, int _x3, int _y3, int _z3, int _x4, int _y4, int _z4, int _x5, int _y5, int _z5, int _x6, int _y6, int _z6, int _x7, int _y7, int _z7, int _x8, int _y8, int _z8)
+{
+	type = _type;
+
+	// заполн¤ем координаты фигуры
+	fillingCoordinates(_x1, _y1, _z1, _x2, _y2, _z2, _x3, _y3, _z3, _x4, _y4, _z4, _x5, _y5, _z5, _x6, _y6, _z6, _x7, _y7, _z7, _x8, _y8, _z8);
+	// стороны фигуры
+	int a = abs(x1 - x2);
+	int b = abs(y1 - y2);
+	int c = abs(z1 - z2);
+	// считаем площадь фигуры
+	calculateSquare(a, b, c);
+
+	// считаем объем фигуры
+	calculateVolume(a, b, c);
 
 }
 
@@ -121,18 +141,7 @@ Shape::Shape(int type, int _x1, int _y1, double R, double H)
 	// считаем площадь фигуры
 	calculateSquare(R, H);
 
-
 	// считаем объем фигуры
-	switch (type)
-	{
-	case circle:
-		volume = 0;
-		break;
-	case cylinder:
-		volume = M_PI * R * R * height;
-		break;
-	default:
-		break;
-	}
+	calculateVolume(R, H);
 
 }

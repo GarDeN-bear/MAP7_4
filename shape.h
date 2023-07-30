@@ -37,4 +37,8 @@ public:
 
 	void calculateSquare(const int& a, const int& b, const int& c);
 	void calculateSquare(const double& R, const double& H);
+
+	void calculateVolume(const int& a, const int& b, const int& c);
+	void calculateVolume(const double& R, const double& H);
+
 };
